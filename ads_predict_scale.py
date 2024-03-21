@@ -35,4 +35,5 @@ df_new_pred = pd.DataFrame(new_pred)
 df_prediction= loaded_target.inverse_transform(df_new_pred)
 
 st.subheader('Predicted Sales')
+st.write(new_pred)
 st.write(df_prediction)
