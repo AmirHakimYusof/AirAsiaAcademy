@@ -22,22 +22,3 @@ df = user_input_features()
 
 st.subheader('User Input parameters')
 st.write(df)
-
-data = sns.load_dataset('advertising')
-X = data.drop(['Sales'],axis=1)
-Y = data.Sales.copy()
-
-modelGaussianIris = GaussianNB()
-modelGaussianIris.fit(X, Y)
-
-prediction = modelGaussianIris.predict(df)
-prediction_proba = modelGaussianIris.predict_proba(df)
-
-st.subheader('Class labels and their corresponding index number')
-st.write(Y.unique())
-
-st.subheader('Prediction')
-st.write(prediction)
-
-st.subheader('Prediction Probability')
-st.write(prediction_proba)
