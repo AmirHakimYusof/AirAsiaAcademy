@@ -33,13 +33,8 @@ df_scaledfeatures.columns = tempfeature.columns
 loaded_model = pickle.load(open("modeladvertising.h5", "rb"))
 new_pred = loaded_model.predict(df_scaledfeatures)
 
-tempActual = pd.DataFrame()
-tempActual['Actual'] = df_prediction['Actual'].copy()
 
-tempPrediction = pd.DataFrame()
-tempPrediction['Prediction'] = df_prediction['Prediction'].copy()
-
-df_prediction['Prediction'] = scalertarget.inverse_transform(tempPrediction)
+df_prediction= scalertarget.inverse_transform(new_pred)
 
 st.subheader('Predicted Sales')
-st.write(df_prediction['Prediction'])
+st.write(df_prediction)
