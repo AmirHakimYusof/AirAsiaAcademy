@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import seaborn as sns
-from sklearn.naive_bayes import GaussianNB
 
 st.write("# Sales Prediction App")
 st.write("This app predicts the **sales** from the different channels!")
@@ -23,9 +22,8 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-loaded_model = pickle.load(open("modeladvertising.h5", "rb")) #rb: read binary
-new_pred = loaded_model.predict(X_test) # testing (examination)
-
+loaded_model = pickle.load(open("modeladvertising.h5", "rb"))
+new_pred = loaded_model.predict(X_test)
 
 st.subheader('Prediction')
 st.write(new_pred)
