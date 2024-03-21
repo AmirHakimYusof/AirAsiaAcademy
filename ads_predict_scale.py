@@ -28,10 +28,10 @@ df_scaledfeatures =loaded_scaler.fit_transform(df)
 
 loaded_model = pickle.load(open("modeladvertising.h5", "rb"))
 new_pred = loaded_model.predict(df_scaledfeatures)
+df_new_pred = pd.DataFrame(new_pred)
 
 loaded_target= pickle.load(open("scaler_target-ads.pkl","rb"))
-st.write(new_pred.dtype)
-#df_prediction= loaded_target.inverse_transform(new_pred)
+df_prediction= loaded_target.inverse_transform(df_new_pred)
 
 st.subheader('Predicted Sales')
-#st.write(df_prediction)
+st.write(df_prediction)
