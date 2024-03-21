@@ -26,7 +26,7 @@ st.write(df)
 loaded_scaler = pickle.load(open("scaler_features-ads.pkl","rb"))
 df_scaledfeatures =loaded_scaler.fit_transform(df)
 
-loaded_model = pickle.load(open("modeladvertising.h5", "rb"))
+loaded_model = pickle.load(open("modeladvertisingscale.h5", "rb"))
 new_pred = loaded_model.predict(df_scaledfeatures)
 df_new_pred = pd.DataFrame(new_pred)
 
