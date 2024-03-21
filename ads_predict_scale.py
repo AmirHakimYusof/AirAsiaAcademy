@@ -3,6 +3,10 @@ import pandas as pd
 import seaborn as sns
 import pickle
 
+loaded_scaler = pickle.load(open("scaler_features-ads.pkl","rb"))
+loaded_model = pickle.load(open("modeladvertisingscale.h5", "rb"))
+loaded_target= pickle.load(open("scaler_target-ads.pkl","rb"))
+
 st.write("# Sales Prediction App")
 st.write("This app predicts the **sales** from the different channels!")
 
@@ -23,14 +27,11 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-loaded_scaler = pickle.load(open("scaler_features-ads.pkl","rb"))
 df_scaledfeatures =loaded_scaler.fit_transform(df)
 
-loaded_model = pickle.load(open("modeladvertisingscale.h5", "rb"))
 new_pred = loaded_model.predict(df_scaledfeatures)
 df_new_pred = pd.DataFrame(new_pred)
 
-loaded_target= pickle.load(open("scaler_target-ads.pkl","rb"))
 df_prediction= loaded_target.inverse_transform(df_new_pred)
 
 st.subheader('Predicted Sales')
