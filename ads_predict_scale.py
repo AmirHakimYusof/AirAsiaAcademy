@@ -27,7 +27,7 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-df_scaledfeatures =loaded_scaler.fit_transform(df)
+df_scaledfeatures =loaded_scaler.transform(df)
 st.write(df_scaledfeatures)
 
 new_pred = loaded_model.predict(df_scaledfeatures)
