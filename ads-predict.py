@@ -23,12 +23,9 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-data = sns.load_dataset('modeladvertising.h5')
+loaded_model = pickle.load(open("modeladvertising.h5", "rb")) #rb: read binary
+new_pred = loaded_model.predict(X_test) # testing (examination)
 
-modeladvertising = GaussianNB()
-
-prediction = modeladvertising.predict(df)
-prediction_proba = modeladvertising.predict_proba(df)
 
 st.subheader('Prediction')
-st.write(prediction)
+st.write(new_pred)
