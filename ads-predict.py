@@ -24,8 +24,8 @@ st.subheader('User Input parameters')
 st.write(df)
 
 data = sns.load_dataset('modeladvertising.h5')
-X = data.drop(['Sales'],axis=1)
-Y = data.Sales.copy()
+
+modeladvertising = GaussianNB()
 
 prediction = modeladvertising.predict(df)
 prediction_proba = modeladvertising.predict_proba(df)
