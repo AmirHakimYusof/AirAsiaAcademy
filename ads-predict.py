@@ -23,9 +23,12 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-data = sns.load_dataset('modeladvertising')
+data = sns.load_dataset('modeladvertising.h5')
 X = data.drop(['Sales'],axis=1)
 Y = data.Sales.copy()
+
+prediction = modeladvertising.predict(df)
+prediction_proba = modeladvertising.predict_proba(df)
 
 st.subheader('Prediction')
 st.write(prediction)
