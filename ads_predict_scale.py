@@ -24,15 +24,10 @@ st.subheader('User Input parameters')
 st.write(df)
 
 loaded_scaler = pickle.load(open("scaler_features-ads.pkl","rb"))
-scalerfeatures = preprocessing.MinMaxScaler()
-scaledfeature=scalerfeatures.fit_transform(tempfeature)
-df_scaledfeatures = pd.DataFrame(scaledfeature)
-df_scaledfeatures.columns = tempfeature.columns
-
+df_scaledfeatures =loaded_scaler.fit_transform(df)
 
 loaded_model = pickle.load(open("modeladvertising.h5", "rb"))
 new_pred = loaded_model.predict(df_scaledfeatures)
-
 
 df_prediction= scalertarget.inverse_transform(new_pred)
 
